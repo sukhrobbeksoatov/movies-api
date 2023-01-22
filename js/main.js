@@ -1,5 +1,5 @@
 const API_KEY = "e8bedb34"
-const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`
+const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`
 
 const elMovieTemplate = document.querySelector("[data-template-movie]")
 const elForm = document.querySelector("[data-search-form]")
