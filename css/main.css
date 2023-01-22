@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 100px;
+}
+
+input {
+  max-width: 300px;
+}
+
+/* MOVIES */
+.movie {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+.card {}
+
+.movie__card {}
+
+.card-img-top {}
+
+.card-body {}
+
+.card-text {}
