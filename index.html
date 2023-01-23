@@ -11,32 +11,50 @@
 </head>
 
 <body>
-  <div class="container">
+  <main class="main">
+    <div class="container">
 
-    <form data-search-form>
-      <input class="form-control" type="text" name="Search" placeholder="Search">
-      <button class="btn btn-primary" type="submit">Search</button>
-    </form>
+      <form class="form" data-search-form>
+        <input class="form-control" type="text" name="search" placeholder="Search">
+        <input class="form-control" type="text" name="year" placeholder="Year">
+        <select class="form-select" name="type">
+          <option value="movie">movie</option>
+          <option value="series">series</option>
+          <option value="episode">episode</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
 
-    <!-- Wrapper -->
-    <div class="movie" data-movie-wrapper>
+      <!-- Wrapper -->
+      <div class="movie" data-movie-wrapper>
+
+      </div>
 
     </div>
 
-  </div>
-
-  <!-- TEMPLATE -->
-  <template data-template-movie>
-    <div class="card movie__card">
-      <img class="card-img-top" src="" alt="" data-movie-img>
-      <div class="card-body">
-        <p class="card-text" data-movie-text></p>
-        <button class="btn btn-primary w-100 btn-sm btn-block" type="button">INFO</button>
+    <!-- MODAL -->
+    <div class="info-modal" id="modal" data-modal>
+      <div class="info-modal__content" data-modal-content>
+        <button class="info-modal__close-btn btn-close" data-modal-close></button>
+        <p class="info-modal-description">
+          Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Ему пояс имени семантика
+          моей маленькая она приставка рукописи о великий свою, языкового образ жизни маленький единственное прямо
+          своего
+          пунктуация свой повстречался гор, это рыбными подпоясал? Толку, страна которой текст, дороге повстречался раз
+          по
+          всей, даль запятой моей приставка даже жаренные диких безорфографичный. Знаках по всей текстами прямо?
+          Переписывается это родного коварный ее семантика над послушавшись живет безорфографичный всеми имеет, его что
+          свой большой грамматики страна своих жаренные строчка пустился. Ведущими языкового, встретил маленький рыбными
+          города, имеет мир меня первую одна единственное домах вопроса живет снова повстречался послушавшись собрал
+          свой.
+          Оксмокс, предупреждал.
+        </p>
       </div>
     </div>
-  </template>
-  <!-- /TEMPLATE -->
+    <!-- /MODAL -->
+  </main>
 
+  <script src="js/modal.js"></script>
   <script src="js/main.js"></script>
 </body>
 

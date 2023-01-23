@@ -36,26 +36,3 @@ img {
   height: 360px;
   width: 270px;
 }
-
-.info-modal {
-  position: fixed;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.info-modal.show {
-  display: flex;
-}
-.info-modal .info-modal__content {
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #fff;
-  max-width: 800px;
-}
-.info-modal .info-modal__close-btn {
-  margin-left: auto;
-  display: block;
-  margin-bottom: 20px;
-}/*# sourceMappingURL=main.css.map */
