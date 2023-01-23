@@ -39,7 +39,7 @@ function renderMovies(movies) {
       <p class="card-text">${movie.Title}</p>
       <button class="btn btn-primary w-100 btn-sm btn-block" type="button" data-modal-open="#modal" data-movie-id="${movie.imdbID}">INFO</button>
     </div>
-  </div>
+  </div> 
     `
 
   });
