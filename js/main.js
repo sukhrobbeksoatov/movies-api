@@ -34,25 +34,15 @@ function renderMovies(movies) {
 
     html += `
     <div class="card-box movie__card">
-    <img class="card-img-top" src="" alt="" data-movie-img>
+    <img class="card-img-top" src="${movie.Poster}" alt="${movie.Title} poster" data-movie-img>
     <div class="card-body">
-      <p class="card-text" data-movie-text></p>
+      <p class="card-text">${movie.Title}</p>
       <button class="btn btn-primary w-100 btn-sm btn-block" type="button" data-modal-open="#modal" data-movie-id="${movie.imdbID}">INFO</button>
     </div>
   </div>
     `
 
-    // const elCard = elMovieTemplate.content.cloneNode(true)
-    // const elCardImg = elCard.querySelector("[data-movie-img]")
-    // const elCardText = elCard.querySelector("[data-movie-text]")
-
-
-    // elCardImg.src = movie.Poster
-    // elCardImg.alt = movie.Title
-    // elCardText.textContent = movie.Title
-
-
-
-    elMovieWrapper.appendChild(elCard)
   });
+
+  elMovieWrapper.innerHTML = html
 }
