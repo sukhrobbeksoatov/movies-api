@@ -4,6 +4,7 @@ const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`
 const elMovieTemplate = document.querySelector("[data-template-movie]")
 const elForm = document.querySelector("[data-search-form]")
 const elMovieWrapper = document.querySelector("[data-movie-wrapper]")
+const elModal = document.querySelector("[data-modal]")
 
 // Search event
 elForm.addEventListener("submit", (evt) => {
@@ -16,17 +17,22 @@ elForm.addEventListener("submit", (evt) => {
   searchMovies(name, type, year)
 })
 
+// Search function
 async function searchMovies(query, type, year) {
   const res = await fetch(`${API_URL}&s=${query}&type=${type}&y=${year}`)
   const searchResult = await res.json()
   renderMovies(searchResult.Search)
 }
 
+// GetMovie ID
 async function getMovieId(id) {
   const res = await fetch(`${API_URL}&i=${id}`)
   const searchResultId = await res.json()
+
+  return searchResultId
 }
 
+// Render Movies fn
 function renderMovies(movies) {
   elMovieWrapper.innerHTML = ""
   let html = ""
@@ -45,4 +51,55 @@ function renderMovies(movies) {
   });
 
   elMovieWrapper.innerHTML = html
+}
+
+// Modal events
+document.addEventListener("click", evt => {
+  onModalBtnClick(evt)
+  onModalOutsideClick(evt)
+  onModalCloseClick(evt)
+
+  document.addEventListener("keydown", btn => {
+    if (btn.key == "Escape") {
+      elModal.classList.remove("show")
+    }
+  })
+})
+
+function onModalBtnClick(evt) {
+  let elTarget = evt.target.closest("[data-modal-open]")
+
+  if (!elTarget) return
+  const modalSelector = elTarget.dataset.modalOpen
+  const movieId = elTarget.dataset.movieId
+
+  fillModal(movieId)
+
+  document.querySelector(modalSelector).classList.add("show")
+}
+
+function onModalOutsideClick(evt) {
+  let elTarget = evt.target
+
+  if (!elTarget.matches("[data-modal]")) return
+  elTarget.classList.remove("show")
+}
+
+function onModalCloseClick(evt) {
+  let elTarget = evt.target.closest("[data-modal-close]")
+
+  if (!elTarget) return
+
+  elTarget.parentElement.parentElement.classList.remove("show")
+}
+
+async function fillModal(movieId) {
+  const movie = await getMovieId(movieId)
+
+  elModal.querySelector("[data-modal-title]").textContent = movie.Title
+  elModal.querySelector("[data-modal-year-text]").textContent = movie.Year
+  elModal.querySelector("[data-modal-rating-text]").textContent = movie.Rated
+  elModal.querySelector("[data-modal-duration-text]").textContent = movie.Runtime
+  elModal.querySelector("[data-modal-genre-text]").textContent = movie.Genre
+  elModal.querySelector("[data-modal-lang-text]").textContent = movie.Language
 }

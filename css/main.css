@@ -29,6 +29,16 @@ body {
   font-size: 54px;
   text-decoration: none;
 }
+@media only screen and (max-width: 768px) {
+  .logo__link {
+    font-size: 44px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .logo__link {
+    font-size: 34px;
+  }
+}
 
 /* form */
 .main {
@@ -46,9 +56,14 @@ body {
   justify-content: center;
   align-items: center;
   gap: 40px;
-  max-width: 650px;
+  max-width: 80%;
   width: 100%;
   margin: 0 auto 100px;
+}
+@media only screen and (max-width: 768px) {
+  .form {
+    flex-wrap: wrap;
+  }
 }
 
 .movie {
@@ -77,6 +92,8 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
@@ -88,9 +105,17 @@ body {
   padding: 20px;
   background-color: #fff;
   max-width: 800px;
+  width: 100%;
 }
 .info-modal .info-modal__close-btn {
   margin-left: auto;
   display: block;
   margin-bottom: 20px;
+}
+.info-modal .info-modal__title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.info-modal .info-modal__text {
+  font-size: 24px;
 }/*# sourceMappingURL=main.css.map */

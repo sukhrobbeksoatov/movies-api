@@ -29,6 +29,14 @@ body {
 .logo__link {
   font-size: 54px;
   text-decoration: none;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 44px;
+  }
+
+  @media only screen and (max-width: 576px) {
+    font-size: 34px;
+  }
 }
 
 /* form */
@@ -47,9 +55,13 @@ body {
   justify-content: center;
   align-items: center;
   gap: 40px;
-  max-width: 650px;
+  max-width: 80%;
   width: 100%;
   margin: 0 auto 100px;
+
+  @media only screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 }
 
 .movie {

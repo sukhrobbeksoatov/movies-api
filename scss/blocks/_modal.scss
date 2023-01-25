@@ -3,6 +3,7 @@
   display: none;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(4px);
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
 
@@ -15,11 +16,21 @@
     padding: 20px;
     background-color: #fff;
     max-width: 800px;
+    width: 100%;
   }
 
   .info-modal__close-btn {
     margin-left: auto;
     display: block;
     margin-bottom: 20px;
+  }
+
+  .info-modal__title {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .info-modal__text {
+    font-size: 24px;
   }
 }
