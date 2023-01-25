@@ -12,8 +12,15 @@ html {
 body {
   background-color: #17171c;
   font-family: "Unbounded", "Arial", sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+
+.main {
+  flex-grow: 1;
+}
 
 /* HEADER */
 .site-header {
@@ -84,4 +91,12 @@ body {
 .card-img-top {
   height: 360px;
   width: 270px;
+}
+
+/* FOOTER */
+.site-footer {
+  padding: 20px 0;
+  color: #000;
+  text-align: center;
+  background-color: #f6f6f6; 
 }

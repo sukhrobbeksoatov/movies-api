@@ -1,75 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&family=Unbounded:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&family=Unbounded:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/main.css">
-</head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__container container">
+        <h1>
+          <a href="/" class="logo__link"> KINOPORTAL </a>
+        </h1>
+      </div>
+    </header>
 
-<body>
+    <main class="main">
+      <div class="container">
+        <form class="form" data-search-form>
+          <input
+            class="form-control"
+            type="text"
+            name="search"
+            placeholder="Search"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="year"
+            placeholder="Year"
+          />
+          <select class="form-select" name="type">
+            <option value="movie">movie</option>
+            <option value="series">series</option>
+            <option value="episode">episode</option>
+          </select>
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
 
-
-  <header class="site-header">
-    <div class="site-header__container container">
-      <h1>
-        <a href="/" class="logo__link">
-          KINOPORTAL
-        </a>
-      </h1>
-    </div>
-  </header>
-
-  <main class="main">
-    <div class="container">
-
-      <form class="form" data-search-form>
-        <input class="form-control" type="text" name="search" placeholder="Search">
-        <input class="form-control" type="text" name="year" placeholder="Year">
-        <select class="form-select" name="type">
-          <option value="movie">movie</option>
-          <option value="series">series</option>
-          <option value="episode">episode</option>
-        </select>
-        <button class="btn btn-primary" type="submit">Search</button>
-      </form>
-
-      <!-- Wrapper -->
-      <div class="movie" data-movie-wrapper>
-
+        <!-- Wrapper -->
+        <div class="movie" data-movie-wrapper></div>
       </div>
 
-    </div>
-
-    <!-- MODAL -->
-    <div class="info-modal" id="modal" data-modal>
-      <div class="info-modal__content" data-modal-content>
-        <button class="info-modal__close-btn btn-close" data-modal-close></button>
-        <div class="info-modal__texts-wrapper">
-          <h2 class=info-modal__text "info-modal__title" data-modal-title></h2>
-          <p class="info-modal__text info-modal__year-text" data-modal-year-text></p>
-          <p class="info-modal__text info-modal__rating" data-modal-rating-text></p>
-          <p class="info-modal__text info-modal__duration" data-modal-duration-text></p>
-          <p class="info-modal__text info-modal__genre" data-modal-genre-text></p>
-          <p class="info-modal__text info-modal__lang" data-modal-lang-text></p>
+      <!-- MODAL -->
+      <div class="info-modal" id="modal" data-modal>
+        <div class="info-modal__content" data-modal-content>
+          <button
+            class="info-modal__close-btn btn-close"
+            data-modal-close
+          ></button>
+          <div class="info-modal__texts-wrapper">
+            <h2
+              class="info-modal__text info-modal__title"
+              data-modal-title
+            ></h2>
+            <p
+              class="info-modal__text info-modal__year-text"
+              data-modal-year-text
+            ></p>
+            <p
+              class="info-modal__text info-modal__rating"
+              data-modal-rating-text
+            ></p>
+            <p
+              class="info-modal__text info-modal__duration"
+              data-modal-duration-text
+            ></p>
+            <p
+              class="info-modal__text info-modal__genre"
+              data-modal-genre-text
+            ></p>
+            <p
+              class="info-modal__text info-modal__lang"
+              data-modal-lang-text
+            ></p>
+            <p
+              class="info-modal__text info-modal__type"
+              data-modal-type-text
+            ></p>
+            <p
+              class="info-modal__text info-modal__imdb-rating"
+              data-modal-imdb-text
+            ></p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- /MODAL -->
-  </main>
+      <!-- /MODAL -->
+    </main>
 
-  <script src="js/modal.js"></script>
-  <script src="js/main.js"></script>
-</body>
+    <footer class="site-footer">
+      <div class="container">
+        <h2 class="site-footer__title">
+          KINOPORTAL
+        </h2>
+      </div>
+    </footer>
 
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

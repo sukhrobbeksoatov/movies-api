@@ -96,10 +96,12 @@ function onModalCloseClick(evt) {
 async function fillModal(movieId) {
   const movie = await getMovieId(movieId)
 
-  elModal.querySelector("[data-modal-title]").textContent = movie.Title
-  elModal.querySelector("[data-modal-year-text]").textContent = movie.Year
-  elModal.querySelector("[data-modal-rating-text]").textContent = movie.Rated
-  elModal.querySelector("[data-modal-duration-text]").textContent = movie.Runtime
-  elModal.querySelector("[data-modal-genre-text]").textContent = movie.Genre
-  elModal.querySelector("[data-modal-lang-text]").textContent = movie.Language
+  elModal.querySelector("[data-modal-title]").textContent = `Title: ${movie.Title}`
+  elModal.querySelector("[data-modal-year-text]").textContent = `Year: ${movie.Year}`
+  elModal.querySelector("[data-modal-rating-text]").textContent = `Rating: ${movie.Rated}`
+  elModal.querySelector("[data-modal-duration-text]").textContent = `Duration ${movie.Runtime}`
+  elModal.querySelector("[data-modal-genre-text]").textContent = `Genres: ${movie.Genre}`
+  elModal.querySelector("[data-modal-lang-text]").textContent = `Lang: ${movie.Language}`
+  elModal.querySelector("[data-modal-type-text]").textContent = `Type: ${movie.Type}⭐`
+  elModal.querySelector("[data-modal-imdb-text]").textContent = `imdB: ${movie.imdbRating}`
 }
