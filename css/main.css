@@ -72,6 +72,7 @@ body {
 @media only screen and (max-width: 768px) {
   .form {
     flex-wrap: wrap;
+    gap: 20px;
   }
 }
 
