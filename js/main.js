@@ -13,14 +13,15 @@ elForm.addEventListener("submit", (evt) => {
 
   const formData = new FormData(elForm);
   const name = formData.get("search");
-  // const type = formData.get("type")
-  // const year = formData.get("year")
-  searchMovies(name);
+  const type = formData.get("type")
+  const year = formData.get("year")
+  searchMovies(name, year, type);
 });
 
 // Search function
-async function searchMovies(query, page = 1) {
-  const res = await fetch(`${API_URL}&s=${query}&page=${page}`);
+async function searchMovies(query, year, type, page = 1) {
+  elMovieWrapper.innerHTML = `<img src="../media/Spinner-1s-200px.gif" />`
+  const res = await fetch(`${API_URL}&s=${query}&page=${page}&y=${year}&type=${type}`);
   const searchResult = await res.json();
   renderMovies(searchResult.Search);
   renderPagination(Math.ceil(searchResult.totalResults / 10), query, page);
@@ -133,8 +134,11 @@ function onPageClick(evt) {
   if (!elTarget) return;
 
   evt.preventDefault();
+  const formData = new FormData(elForm);
+  const type = formData.get("type")
+  const year = formData.get("year")
 
-  searchMovies(elTarget.dataset.movieQuery, elTarget.dataset.moviePage);
+  searchMovies(elTarget.dataset.movieQuery, year, type, elTarget.dataset.moviePage);
   console.log(elTarget.dataset.moviePage);
 }
 
