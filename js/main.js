@@ -39,9 +39,10 @@ function renderMovies(movies) {
   elMovieWrapper.innerHTML = "";
   let html = "";
   movies.forEach((movie) => {
+    const moviePosterUrl = movie.Poster === "N/A" ? "https://via.placeholder.com/180x270": movie.Poster
     html += `
     <div class="card-box movie__card">
-    <img class="card-img-top" src="${movie.Poster}" alt="${movie.Title} poster" data-movie-img>
+    <img class="card-img-top" src="${moviePosterUrl}" alt="${movie.Title} poster" data-movie-img>
     <div class="card-body">
       <p class="card-text">${movie.Title}</p>
       <button class="btn btn-primary w-100 btn-sm btn-block" type="button" data-modal-open="#modal" data-movie-id="${movie.imdbID}">INFO</button>
