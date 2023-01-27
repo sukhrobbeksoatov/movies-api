@@ -83,6 +83,8 @@ body {
 /* CARD */
 
 .card-box {
+  display: flex;
+  flex-direction: column;
   max-width: 270px;
   overflow: hidden;
   background-color: #fff;
@@ -94,6 +96,15 @@ body {
   height: 360px;
   width: 270px;
   object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-box__btn {
+  margin-top: auto;
 }
 
 /* FOOTER */

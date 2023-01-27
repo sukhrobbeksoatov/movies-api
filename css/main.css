@@ -85,6 +85,8 @@ body {
 
 /* CARD */
 .card-box {
+  display: flex;
+  flex-direction: column;
   max-width: 270px;
   overflow: hidden;
   background-color: #fff;
@@ -97,6 +99,15 @@ body {
   width: 270px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-box__btn {
+  margin-top: auto;
 }
 
 /* FOOTER */
