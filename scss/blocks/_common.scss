@@ -10,7 +10,8 @@ html {
 }
 
 body {
-  background-color: #17171c;
+  // background-color: #17171c;
+  background-color: #fff;
   font-family: "Unbounded", "Arial", sans-serif;
   height: 100%;
   display: flex;
@@ -118,7 +119,7 @@ body {
 
 
 /* PAGINATION */ 
-.pagination {
+.movie-pagination {
   display: flex;
   justify-content: center;
   row-gap: 2px;
