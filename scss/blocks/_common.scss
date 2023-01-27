@@ -17,6 +17,12 @@ body {
   flex-direction: column;
 }
 
+.container {
+  max-width: 1200px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
 
 .main {
   flex-grow: 1;
@@ -51,12 +57,6 @@ body {
   padding: 50px 0;
 }
 
-.container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-}
-
 .form {
   display: flex;
   justify-content: center;
@@ -83,6 +83,7 @@ body {
 
 .card-box {
   max-width: 270px;
+  overflow: hidden;
   background-color: #fff;
   border-radius: 10px;
   width: 100%;
@@ -99,4 +100,11 @@ body {
   color: #000;
   text-align: center;
   background-color: #f6f6f6; 
+}
+
+
+/* PAGINATION */ 
+.pagination {
+  display: flex;
+  justify-content: center;
 }

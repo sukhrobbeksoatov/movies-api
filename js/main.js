@@ -1,43 +1,44 @@
-const API_KEY = "e8bedb34"
-const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`
+const API_KEY = "e8bedb34";
+const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
 
-const elMovieTemplate = document.querySelector("[data-template-movie]")
-const elForm = document.querySelector("[data-search-form]")
-const elMovieWrapper = document.querySelector("[data-movie-wrapper]")
-const elModal = document.querySelector("[data-modal]")
+const elMovieTemplate = document.querySelector("[data-template-movie]");
+const elForm = document.querySelector("[data-search-form]");
+const elMovieWrapper = document.querySelector("[data-movie-wrapper]");
+const elMoviePagination = document.querySelector("[data-movie-pagination]");
+const elModalInner = document.querySelector("[data-modal-inner]");
 
 // Search event
 elForm.addEventListener("submit", (evt) => {
-  evt.preventDefault()
+  evt.preventDefault();
 
-  const formData = new FormData(elForm)
-  const name = formData.get("search")
-  const type = formData.get("type")
-  const year = formData.get("year")
-  searchMovies(name, type, year)
-})
+  const formData = new FormData(elForm);
+  const name = formData.get("search");
+  // const type = formData.get("type")
+  // const year = formData.get("year")
+  searchMovies(name);
+});
 
 // Search function
-async function searchMovies(query, type, year) {
-  const res = await fetch(`${API_URL}&s=${query}&type=${type}&y=${year}`)
-  const searchResult = await res.json()
-  renderMovies(searchResult.Search)
+async function searchMovies(query, page = 1) {
+  const res = await fetch(`${API_URL}&s=${query}&page=${page}`);
+  const searchResult = await res.json();
+  renderMovies(searchResult.Search);
+  renderPagination(Math.ceil(searchResult.totalResults / 10), query, page);
 }
 
 // GetMovie ID
 async function getMovieId(id) {
-  const res = await fetch(`${API_URL}&i=${id}`)
-  const searchResultId = await res.json()
+  const res = await fetch(`${API_URL}&i=${id}`);
+  const searchResultId = await res.json();
 
-  return searchResultId
+  return searchResultId;
 }
 
 // Render Movies fn
 function renderMovies(movies) {
-  elMovieWrapper.innerHTML = ""
-  let html = ""
-  movies.forEach(movie => {
-
+  elMovieWrapper.innerHTML = "";
+  let html = "";
+  movies.forEach((movie) => {
     html += `
     <div class="card-box movie__card">
     <img class="card-img-top" src="${movie.Poster}" alt="${movie.Title} poster" data-movie-img>
@@ -46,62 +47,123 @@ function renderMovies(movies) {
       <button class="btn btn-primary w-100 btn-sm btn-block" type="button" data-modal-open="#modal" data-movie-id="${movie.imdbID}">INFO</button>
     </div>
   </div> 
-    `
-
+    `;
   });
 
-  elMovieWrapper.innerHTML = html
+  elMovieWrapper.innerHTML = html;
+}
+
+// Render pagination fn
+function renderPagination(totalPages, query, page) {
+  elMoviePagination.innerHTML = "";
+  html = "";
+
+  html += ` <li class="page-item${
+    +page === 1 ? " disabled" : ""
+  }"><a class="page-link" href="?page=${+page - 1}" data-movie-page="${
+    +page - 1
+  }" data-movie-query="${query}">Previous</a></li>`;
+  for (let i = 1; i <= totalPages; i++) {
+    html += `
+  <li class="page-item${
+    +page === i ? " active" : ""
+  }"><a class="page-link" href="?page=${i}" data-movie-page="${i}" data-movie-query="${query}">${i}</a></li>
+  `;
+  }
+  html += ` <li class="page-item${
+    +page === totalPages ? " disabled" : ""
+  }"><a class="page-link" href="?page=${+page + 1}" data-movie-page="${
+    +page + 1
+  }" data-movie-query="${query}">Next</a></li>`;
+
+  elMoviePagination.innerHTML = html;
 }
 
 // Modal events
-document.addEventListener("click", evt => {
-  onModalBtnClick(evt)
-  onModalOutsideClick(evt)
-  onModalCloseClick(evt)
+document.addEventListener("click", (evt) => {
+  onModalBtnClick(evt);
+  onModalOutsideClick(evt);
+  onModalCloseClick(evt);
+  onPageClick(evt);
 
-  document.addEventListener("keydown", btn => {
+  document.addEventListener("keydown", (btn) => {
     if (btn.key == "Escape") {
-      elModal.classList.remove("show")
+      document.querySelector("[data-modal]").classList.remove("show");
     }
-  })
-})
+  });
+});
 
+// Modal open
 function onModalBtnClick(evt) {
-  let elTarget = evt.target.closest("[data-modal-open]")
+  let elTarget = evt.target.closest("[data-modal-open]");
 
-  if (!elTarget) return
-  const modalSelector = elTarget.dataset.modalOpen
-  const movieId = elTarget.dataset.movieId
+  if (!elTarget) return;
+  const modalSelector = elTarget.dataset.modalOpen;
+  const movieId = elTarget.dataset.movieId;
+  const elModal = document.querySelector(modalSelector);
+  const elModalSpinner = elModal.querySelector("[data-modal-spinner]");
 
-  fillModal(movieId)
+  fillModal(movieId, elModalSpinner);
 
-  document.querySelector(modalSelector).classList.add("show")
+  elModal.classList.add("show");
 }
 
+// Modal outside close
 function onModalOutsideClick(evt) {
-  let elTarget = evt.target
+  let elTarget = evt.target;
 
-  if (!elTarget.matches("[data-modal]")) return
-  elTarget.classList.remove("show")
+  if (!elTarget.matches("[data-modal]")) return;
+  elTarget.classList.remove("show");
 }
 
+// Modal close
 function onModalCloseClick(evt) {
-  let elTarget = evt.target.closest("[data-modal-close]")
+  let elTarget = evt.target.closest("[data-modal-close]");
 
-  if (!elTarget) return
+  if (!elTarget) return;
 
-  elTarget.parentElement.parentElement.classList.remove("show")
+  elTarget.parentElement.parentElement.parentElement.classList.remove("show");
 }
 
-async function fillModal(movieId) {
-  const movie = await getMovieId(movieId)
+// Page click fn
+function onPageClick(evt) {
+  let elTarget = evt.target.closest("[data-movie-page]");
 
-  elModal.querySelector("[data-modal-title]").textContent = `Title: ${movie.Title}`
-  elModal.querySelector("[data-modal-year-text]").textContent = `Year: ${movie.Year}`
-  elModal.querySelector("[data-modal-rating-text]").textContent = `Rating: ${movie.Rated}`
-  elModal.querySelector("[data-modal-duration-text]").textContent = `Duration ${movie.Runtime}`
-  elModal.querySelector("[data-modal-genre-text]").textContent = `Genres: ${movie.Genre}`
-  elModal.querySelector("[data-modal-lang-text]").textContent = `Lang: ${movie.Language}`
-  elModal.querySelector("[data-modal-type-text]").textContent = `Type: ${movie.Type}⭐`
-  elModal.querySelector("[data-modal-imdb-text]").textContent = `imdB: ${movie.imdbRating}`
+  if (!elTarget) return;
+
+  evt.preventDefault();
+
+  searchMovies(elTarget.dataset.movieQuery, elTarget.dataset.moviePage);
+  console.log(elTarget.dataset.moviePage);
+}
+
+async function fillModal(movieId, elModalSpinner) {
+  elModalSpinner.classList.remove("d-none");
+  const movie = await getMovieId(movieId);
+
+  elModalInner.querySelector(
+    "[data-modal-title]"
+  ).textContent = `Title: ${movie.Title}`;
+  elModalInner.querySelector(
+    "[data-modal-year-text]"
+  ).textContent = `Year: ${movie.Year}`;
+  elModalInner.querySelector(
+    "[data-modal-rating-text]"
+  ).textContent = `Rating: ${movie.Rated}`;
+  elModalInner.querySelector(
+    "[data-modal-duration-text]"
+  ).textContent = `Duration ${movie.Runtime}`;
+  elModalInner.querySelector(
+    "[data-modal-genre-text]"
+  ).textContent = `Genres: ${movie.Genre}`;
+  elModalInner.querySelector(
+    "[data-modal-lang-text]"
+  ).textContent = `Lang: ${movie.Language}`;
+  elModalInner.querySelector(
+    "[data-modal-type-text]"
+  ).textContent = `Type: ${movie.Type}⭐`;
+  elModalInner.querySelector(
+    "[data-modal-imdb-text]"
+  ).textContent = `imdB: ${movie.imdbRating}`;
+  elModalSpinner.classList.add("d-none");
 }

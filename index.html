@@ -12,16 +12,16 @@
       href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&family=Unbounded:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
 
   <body>
+    <!-- Site Header -->
     <header class="site-header">
       <div class="site-header__container container">
         <h1>
-          <a href="/" class="logo__link"> KINOPORTAL </a>
+          <a href="/" class="logo__link">MOVIES</a>
         </h1>
       </div>
     </header>
@@ -35,7 +35,7 @@
             name="search"
             placeholder="Search"
           />
-          <input
+          <!-- <input
             class="form-control"
             type="text"
             name="year"
@@ -45,26 +45,46 @@
             <option value="movie">movie</option>
             <option value="series">series</option>
             <option value="episode">episode</option>
-          </select>
+          </select> -->
           <button class="btn btn-primary" type="submit">Search</button>
         </form>
 
         <!-- Wrapper -->
         <div class="movie" data-movie-wrapper></div>
+
       </div>
+      <!-- Pagination -->
+      <nav class="" aria-label="Page navigation example">
+        <ul class="pagination" data-movie-pagination>
+          <!-- <li class="page-item">
+            <a class="page-link" href="#">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+        </ul>
+      </nav>
 
       <!-- MODAL -->
       <div class="info-modal" id="modal" data-modal>
         <div class="info-modal__content" data-modal-content>
-          <button
-            class="info-modal__close-btn btn-close"
-            data-modal-close
-          ></button>
-          <div class="info-modal__texts-wrapper">
-            <h2
-              class="info-modal__text info-modal__title"
-              data-modal-title
-            ></h2>
+          <div class="info-modal__wrapper">
+            <h2 class="info-modal__heading">Description</h2>
+            <button
+              class="info-modal__close-btn btn-close"
+              data-modal-close
+            ></button>
+          </div>
+          <div
+            class="info-modal__spinner spinner-border text-dark d-none"
+            role="status"
+            data-modal-spinner
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="info-modal__texts-wrapper" data-modal-inner>
+            <h2 class="info-modal__title" data-modal-title></h2>
             <p
               class="info-modal__text info-modal__year-text"
               data-modal-year-text
@@ -99,15 +119,13 @@
       <!-- /MODAL -->
     </main>
 
+    <!-- Site footer -->
     <footer class="site-footer">
       <div class="container">
-        <h2 class="site-footer__title">
-          KINOPORTAL
-        </h2>
+        <h2 class="site-footer__title">MOVIES</h2>
       </div>
     </footer>
 
-    <script src="js/modal.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

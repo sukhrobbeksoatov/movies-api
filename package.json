@@ -1,0 +1,22 @@
+{
+  "name": "api-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suhrobfrontend/movies-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suhrobfrontend/movies-api/issues"
+  },
+  "homepage": "https://github.com/suhrobfrontend/movies-api#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}

@@ -4,11 +4,21 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
+  padding: 50px;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
 
   &.show {
     display: flex;
+  }
+
+  .info-modal__wrapper {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 700;
+    margin-bottom: 30px;
+
+    margin-bottom: 20px;
   }
 
   .info-modal__content {
@@ -22,15 +32,31 @@
   .info-modal__close-btn {
     margin-left: auto;
     display: block;
-    margin-bottom: 20px;
+  }
+
+  .info-modal__spinner {
+    display: block;
+    margin: 0 auto;
+
+    &:not(.d-none) + div {
+      display: none;
+    }
   }
 
   .info-modal__title {
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 500;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 22px;
+    }
   }
 
   .info-modal__text {
     font-size: 24px;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 19px;
+    }
   }
 }
