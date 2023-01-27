@@ -19,7 +19,6 @@ body {
 
 .container {
   max-width: 1200px;
-  height: 100%;
   width: 100%;
   margin: 0 auto;
 }
@@ -57,7 +56,8 @@ body {
 
 /* form */
 .main {
-  padding: 50px 0;
+  flex-grow: 1;
+  padding: 30px 0;
 }
 
 .form {
@@ -81,6 +81,7 @@ body {
   row-gap: 40px;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-bottom: 30px;
 }
 
 /* CARD */
@@ -122,6 +123,7 @@ body {
 .pagination {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .info-modal {
