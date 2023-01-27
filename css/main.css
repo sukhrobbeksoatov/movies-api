@@ -95,6 +95,8 @@ body {
 .card-img-top {
   height: 360px;
   width: 270px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* FOOTER */
